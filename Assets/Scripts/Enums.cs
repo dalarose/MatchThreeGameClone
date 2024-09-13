@@ -13,7 +13,6 @@ public enum BonusType
     DestroyWholeRowColumn
 }
 
-
 public static class BonusTypeUtilities
 {
     /// <summary>
@@ -23,8 +22,7 @@ public static class BonusTypeUtilities
     /// <returns></returns>
     public static bool ContainsDestroyWholeRowColumn(BonusType bt)
     {
-        return (bt & BonusType.DestroyWholeRowColumn) 
-            == BonusType.DestroyWholeRowColumn;
+        return (bt & BonusType.DestroyWholeRowColumn) == BonusType.DestroyWholeRowColumn;
     }
 }
 

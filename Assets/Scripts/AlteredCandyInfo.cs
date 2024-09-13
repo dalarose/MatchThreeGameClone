@@ -7,28 +7,25 @@ using UnityEngine;
 
 public class AlteredCandyInfo
 {
-    private List<GameObject> newCandy { get; set; }
     public int MaxDistance { get; set; }
+
+    private List<GameObject> _newCandy { get; set; }
 
     /// <summary>
     /// Returns distinct list of altered candy
     /// </summary>
-    public IEnumerable<GameObject> AlteredCandy
+    public IEnumerable<GameObject> AlteredCandy => _newCandy.Distinct();
+
+    public AlteredCandyInfo()
     {
-        get
-        {
-            return newCandy.Distinct();
-        }
+        _newCandy = new List<GameObject>();
     }
 
     public void AddCandy(GameObject go)
     {
-        if (!newCandy.Contains(go))
-            newCandy.Add(go);
-    }
-
-    public AlteredCandyInfo()
-    {
-        newCandy = new List<GameObject>();
+        if (!_newCandy.Contains(go))
+        {
+            _newCandy.Add(go);
+        }
     }
 }

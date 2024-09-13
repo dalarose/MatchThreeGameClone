@@ -1,29 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundManager : MonoBehaviour {
-
-    //crincle sound found here: http://freesound.org/people/volivieri/sounds/37171/
-
+public class SoundManager : MonoBehaviour
+{
     public AudioClip crincleAudioClip;
-    AudioSource crincle;
 
+    // crinkle sound found here: http://freesound.org/people/volivieri/sounds/37171/
+    private AudioSource _crinkleSFX;
 
-    void Awake()
+    private void Awake()
     {
-        crincle = AddAudio(crincleAudioClip);
+        _crinkleSFX = AddAudio(crincleAudioClip);
     }
 
-    AudioSource AddAudio( AudioClip audioClip)
+    private AudioSource AddAudio( AudioClip audioClip)
     {
-        AudioSource audioSource = this.gameObject.AddComponent<AudioSource>();
+        var audioSource = this.gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.clip = audioClip;
         return audioSource;
     }
 
-    public void PlayCrincle()
+    public void PlayCrinkleSfx()
     {
-        crincle.Play();
+        _crinkleSFX.Play();
     }
 }

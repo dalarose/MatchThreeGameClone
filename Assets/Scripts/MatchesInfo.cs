@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class MatchesInfo
 {
-    private List<GameObject> matchedCandies;
+    public BonusType BonusesContained { get; set; }
 
     /// <summary>
     /// Returns distinct list of matched candy
@@ -16,14 +16,16 @@ public class MatchesInfo
     {
         get
         {
-            return matchedCandies.Distinct();
+            return _matchedCandies.Distinct();
         }
     }
 
-    public void AddObject(GameObject go)
+    private List<GameObject> _matchedCandies;
+    
+    public MatchesInfo()
     {
-        if (!matchedCandies.Contains(go))
-            matchedCandies.Add(go);
+        _matchedCandies = new List<GameObject>();
+        BonusesContained = BonusType.None;
     }
 
     public void AddObjectRange(IEnumerable<GameObject> gos)
@@ -34,12 +36,10 @@ public class MatchesInfo
         }
     }
 
-    public MatchesInfo()
+    private void AddObject(GameObject go)
     {
-        matchedCandies = new List<GameObject>();
-        BonusesContained = BonusType.None;
+        if (!_matchedCandies.Contains(go))
+            _matchedCandies.Add(go);
     }
-
-    public BonusType BonusesContained { get; set; }
 }
 
